@@ -14,7 +14,7 @@ type Service interface {
 	DescribeHost(context.Context, *DescribeHostRequest) (*Host, error)
 	// 主机更新
 	UpdateHost(context.Context, *UpdateHostRequest) (*Host, error)
-	// 删除主机,删除为啥要返回，比如前端需要打印当前删除的主机ip 等信息
+	// 删除主机,删除为啥要返回，比如前端需要打印当前删除的主机ip等信息
 	DeleteHost(context.Context, *DeleteHostRequest) (*Host, error)
 }
 
@@ -76,3 +76,10 @@ type UpdateHostRequest struct {
 }
 
 type DeleteHostRequest struct{}
+
+func NewHost() *Host {
+	return &Host{
+		Resource: &Resource{},
+		Describe: &Describe{},
+	}
+}
